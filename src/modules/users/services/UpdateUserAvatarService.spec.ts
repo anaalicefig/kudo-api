@@ -23,6 +23,9 @@ describe('UpdateUserAvatar', () => {
       name: 'John Doe',
       email: 'johndoe@example.com',
       password: '123456',
+      grateful: 2,
+      learned: 2,
+      was_awesome: 2,
     })
 
     await updateUserAvatar.execute({
@@ -49,6 +52,9 @@ describe('UpdateUserAvatar', () => {
       name: 'John Doe',
       email: 'johndoe@example.com',
       password: '123456',
+      grateful: 2,
+      learned: 2,
+      was_awesome: 2,
     })
 
     await updateUserAvatar.execute({

@@ -36,16 +36,13 @@ describe('SendKudo', () => {
       password: '123456',
     })
 
-    const kudo = await createSendKudo.execute({
+    const updatedGaveKudoUser = await createSendKudo.execute({
       gave_user: gaveUser.id,
       received_user: receivedUser.id,
       type: 'was_awesome',
     })
 
-    console.log(gaveUser)
-
-    expect(kudo).toHaveProperty('id')
-    expect(gaveUser.was_awesome).toBe(1)
+    expect(updatedGaveKudoUser.was_awesome).toBe(1)
   })
 
   it('should not be able to send a kudo to a non-existing user', async () => {

@@ -6,7 +6,7 @@ import AppError from '@shared/errors/AppError'
 let fakeUsersRepository: FakeUsersRepository
 let showProfile: ShowProfileService
 
-describe('showProfile', () => {
+describe('ShowProfile', () => {
   beforeEach(() => {
     fakeUsersRepository = new FakeUsersRepository()
 
@@ -18,6 +18,9 @@ describe('showProfile', () => {
       name: 'John Doe',
       email: 'johndoe@example.com',
       password: '123456',
+      grateful: 2,
+      learned: 2,
+      was_awesome: 2,
     })
 
     const profile = await showProfile.execute({

@@ -4,7 +4,7 @@ import AppError from '@shared/errors/AppError'
 import ISendKudosRepository from '@modules/kudos/repositories/ISendKudosRepository'
 import IUsersRepository from '@modules/users/repositories/IUsersRepository'
 
-import SendKudo from '../infra/typeorm/entities/SendKudo'
+import User from '@modules/users/infra/typeorm/entities/User'
 
 type KudoTypes = 'learned' | 'was_awesome' | 'grateful'
 
@@ -27,7 +27,7 @@ class CreateSendKudoService {
     received_user,
     gave_user,
     type,
-  }: IRequestSendKudos): Promise<SendKudo> {
+  }: IRequestSendKudos): Promise<User> {
     const receivedUser = await this.usersRepository.findById(received_user)
     const gaveUser = await this.usersRepository.findById(gave_user)
 
@@ -43,13 +43,13 @@ class CreateSendKudoService {
 
     await this.usersRepository.save(gaveUser)
 
-    const kudo = await this.sendKudosRepository.create({
+    await this.sendKudosRepository.create({
       gave_user,
       received_user,
       type,
     })
 
-    return kudo
+    return gaveUser
   }
 }
 
