@@ -1,5 +1,5 @@
 <h1 align="center">
-    Kudo Web
+    Kudo API
 </h1>
 
 <p align="center">
