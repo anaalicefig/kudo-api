@@ -38,6 +38,9 @@ class CreateUserService {
       email,
       name,
       password: hashedPassword,
+      was_awesome: 2,
+      grateful: 2,
+      learned: 2,
     })
 
     return user

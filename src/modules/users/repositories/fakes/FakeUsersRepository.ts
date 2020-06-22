@@ -26,7 +26,15 @@ class UsersRepository implements IUsersRepository {
   }: ICreateUserDTO): Promise<User> {
     const user = new User()
 
-    Object.assign(user, { id: uuid(), name, email, password })
+    Object.assign(user, {
+      id: uuid(),
+      name,
+      email,
+      password,
+      was_awesome: 2,
+      grateful: 2,
+      learned: 2,
+    })
 
     this.users.push(user)
 

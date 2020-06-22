@@ -1,0 +1,47 @@
+version: '3.5'
+
+services:
+  kudo-api:
+    build:
+      context: .
+      dockerfile: .docker/app/Dockerfile
+    command: /entrypoint.sh
+    depends_on:
+      - api-db
+    working_dir: '/app'
+    ports:
+      - 3333:3333
+    # networks:
+    #   - apinetwork
+    volumes:
+      - .:/app
+    environment:
+      - PORT=${PORT}
+      - DB_HOST=${DB_HOST}
+      - DB_PORT=${DB_PORT}
+      - DB_USERNAME=${DB_USERNAME}
+      - DB_PASSWORD=${DB_PASSWORD}
+      - DB_NAME=${DB_NAME}
+    env_file: .env
+
+  api-db:
+    container_name: api-db
+    image: postgres
+    restart: always
+    # networks:
+    #   - apinetwork
+    volumes:
+      - ./apidata:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${DB_NAME}
+      - POSTGRES_USER=${DB_USERNAME}
+      - POSTGRES_PASSWORD=${DB_PASSWORD}
+    env_file: .env
+
+# networks:
+#   apinetwork:
+#     external:
+#       name: service_network
+#   gwproxy:
+#     external:
+#       name: gwproxy_network
