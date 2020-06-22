@@ -1,10 +1,10 @@
 {
   "type": "postgres",
-  "host": "api-db",
+  "host": "ec2-52-72-221-20.compute-1.amazonaws.com",
   "port": 5432,
-  "username": "postgres",
-  "password": "docker",
-  "database": "kudo_api",
+  "username": "imravyalevifqt",
+  "password": "a140c6045256f8092aecbaba37844de5e1cf89b46ce7f27a77abbc53250170aa",
+  "database": "dd0ben92nbn9g3",
   "entities": [
     "./src/modules/**/infra/typeorm/entities/*.ts"
   ],
